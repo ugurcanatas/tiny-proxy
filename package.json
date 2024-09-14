@@ -1,6 +1,6 @@
 {
   "name": "tiny-timer-proxy",
-  "version": "0.0.0-test-beta.1",
+  "version": "0.0.0-test-beta.2",
   "description": "A simple proxy class for timers and intervals",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
