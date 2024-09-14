@@ -1,13 +1,6 @@
-type Logger = keyof Omit<Console, "Console">;
+export type Logger = keyof Pick<Console, "log" | "error" | "warn">;
 
-const logger = (logger?: Logger) => {
-  if (!logger) {
-    return;
-  }
-  return console[logger];
-};
-
-class TinyProxy {
+export class TinyProxy {
   private logLevel?: Logger;
   private _activeTimeouts: Set<unknown>;
   private _activeIntervals: Set<unknown>;
@@ -32,7 +25,11 @@ class TinyProxy {
 
     global.setTimeout = new Proxy(global.setTimeout, {
       apply: (target, thisArg, argumentsList) => {
-        const id = Reflect.apply(target, thisArg, argumentsList);
+        const id = Reflect.apply<
+          typeof setTimeout,
+          any[],
+          NodeJS.Timeout | number
+        >(target, thisArg, argumentsList);
         logger?.("setTimeout called with:", { id, thisArg, argumentsList });
         this._activeTimeouts.add(id);
         return id;
@@ -58,7 +55,11 @@ class TinyProxy {
 
     global.setInterval = new Proxy(global.setInterval, {
       apply: (target, thisArg, argumentsList) => {
-        const id = Reflect.apply(target, thisArg, argumentsList);
+        const id = Reflect.apply<
+          typeof setInterval,
+          any[],
+          NodeJS.Timeout | number
+        >(target, thisArg, argumentsList);
         logger?.("setInterval called with:", { id, thisArg, argumentsList });
         this._activeIntervals.add(id);
         return id;
@@ -87,7 +88,3 @@ class TinyProxy {
     return this._activeIntervals;
   }
 }
-
-// function setupIntervalProxy() {
-
-//   }
