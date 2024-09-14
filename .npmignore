@@ -2,3 +2,5 @@ node_modules
 tsconfig.json
 src
 .gitignore
+.github
+__tests__
