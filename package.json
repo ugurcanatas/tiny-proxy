@@ -11,8 +11,8 @@
   "files": [
     "dist/**/*"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Ugurcan Emre Atas",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.5.4",
     "ts-node": "^10.9.2",
