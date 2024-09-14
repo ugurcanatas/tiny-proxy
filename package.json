@@ -1,11 +1,21 @@
 {
   "name": "tiny-proxy",
-  "version": "0.0.0",
-  "description": "a simple proxy for timers and intervals",
-  "main": "index.js",
+  "version": "0.0.0-test-beta.1",
+  "description": "A simple proxy class for timers and intervals",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
 }
