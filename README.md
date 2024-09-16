@@ -1,6 +1,7 @@
 ## Tiny Proxy
 
 Small Javascript proxy wrapper around `setTimeout`, `clearTimeout`, `setInterval` and `clearInterval`.
+This library can help you identify the leaking timers and intervals in your applications.
 
 ### Installation
 
@@ -18,7 +19,7 @@ npm i tiny-timer-proxy
 
 ### Why?
 
-This tool was developed to monitor and analyze the frequency of timeouts and intervals in a React Native application, helping developers assess their impact on performance.
+This tool was developed to monitor and analyze the frequency of timeouts and intervals in a React Native application, helping developers assess their impact on performance. It can help identifying uncleared & leaking timeouts and intervals.
 
 ### Usage
 
@@ -49,7 +50,7 @@ You should see something like:
 ```
 
 
-Alternatively, you can access the set variables used for storing the related information about the calls by:
+Alternatively, you can access the active timeout and interval variables(Set) via:
 
 ```ts
 const p = new TinyProxy({ shouldLog: true });
